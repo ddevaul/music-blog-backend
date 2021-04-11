@@ -29,7 +29,7 @@ Set up database connection
 const mongoose = require('mongoose');
 require('dotenv').config()
 //Set up default mongoose connection
-const mongoDB = `mongodb+srv://desi:${process.env.MONGO_KEY}@cluster0.86crs.mongodb.net/music_blog?retryWrites=true&w=majority`;
+const mongoDB = `mongodb+srv://desi:${process.env.MONGODB_KEY}@cluster0.86crs.mongodb.net/music_blog?retryWrites=true&w=majority`;
 mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
 //Get the default connection
 const db = mongoose.connection;
@@ -49,25 +49,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
-// Add headers
-app.use(function (req, res, next) {
-
-  // Website you wish to allow to connect
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5000');
-
-  // Request methods you wish to allow
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-
-  // Request headers you wish to allow
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-
-  // Set to true if you need the website to include cookies in the requests sent
-  // to the API (e.g. in case you use sessions)
-  res.setHeader('Access-Control-Allow-Credentials', true);
-
-  // Pass to next layer of middleware
-  next();
-});
 /* 
 --------------------------------------------------------------------------------
 Routes
