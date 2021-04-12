@@ -5,7 +5,7 @@ const cors = require('cors');
 router.get('/', controller.index);
 
 
-router.post('/', cors(), controller.login);
+router.post('/', controller.login);
 
 module.exports = router; 
 
