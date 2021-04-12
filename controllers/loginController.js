@@ -6,9 +6,9 @@ exports.index = (req, res) => res.json("this is working");
 
 exports.login = function (req, res) {
   passport.authenticate('local', {session: false}, (err, user, info) => {
-          if (err || !user) {
+          if (!user) {
               return res.status(400).json({
-                  message: 'Something is not right',
+                  message: 'Something is not wright',
                   user : user
               });
           }
