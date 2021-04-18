@@ -53,7 +53,7 @@ const ExtractJWT = passportJWT.ExtractJwt;
 
 passport.use(new JWTStrategy({
         jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
-        secretOrKey   : 'your_jwt_secret',
+        secretOrKey   : process.env.SECRET_KEY,
     },
     function (jwtPayload, cb) {
         //find the user in db if needed. This functionality may be omitted if you store everything you'll need in JWT payload.
