@@ -5,7 +5,9 @@ const Schema = mongoose.Schema;
 const ArticleSchema = new Schema({
   title: {type: String, required: true},
   content: {type: String, required: true},
+  date: {type: Date, required: true},
   author: {type: Schema.Types.ObjectId, ref: 'Author'},
+  comments: [{type: Schema.Types.ObjectId, ref: 'Comment'}],
 });
 
 ArticleSchema.virtual('url').get(function() {

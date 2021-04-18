@@ -67,10 +67,6 @@ passport.use(new JWTStrategy({
         //     .catch(err => {
         //         return cb(err);
         //     }); 
-        if (jwtPayload.user.username === "Hamlet") {
-          return cb(null, jwtPayload);
-        } 
-        else {
-          return cb (null, null)
-        }
+        return cb (null, jwtPayload)
+        
 }));
