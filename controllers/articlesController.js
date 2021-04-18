@@ -64,7 +64,7 @@ exports.individualArticle = (req, res) => {
 }
 
 exports.delete = (req, res) => {
-  if (req.user.username === "Hamlet") {
+  if (req.user.user.username === "Hamlet") {
     Article.findOneAndDelete({_id: req.params.id}).exec(() => res.json("Article deleted"));
   }
 }
@@ -81,7 +81,7 @@ exports.put = [
       res.status(400);
       res.json('there was an error')
       return;
-    } else if (req.user.username === "Hamlet") {
+    } else if (req.user.user.username === "Hamlet") {
         Article.findById(req.params.id)
         .exec((err, article) => {
           article.title = req.body.title;
